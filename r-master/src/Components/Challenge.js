@@ -26,32 +26,62 @@ class Challenge extends Component {
             2. Mejorar los retos para que incluyan CSS. (10 minutos)
             3. Subir la informacion al servidor el arreglo con la solucion y la url a la hoja de vida. (1 hora)
         */
-        var textareas = [{ html: true }, { css: true }, { js: true }];
-        var textareas1 = [{ html: true }, { css: true }, { js: true }];
+        var textareas = { html: true ,  css: true,  js: true };
         var javascript = document.getElementById("text_js");
         var css = document.getElementById("text_css");
         var html = document.getElementById("text_html");
 
         if (reto.items.indexOf('js') >= 0 && !javascript.value) {
-            textareas[2] = { js: false };
+            textareas.js=false;
         }
 
         if (reto.items.indexOf('css') >= 0 && !css.value) {
-            textareas[1] = { css: false };
+            textareas.css=false;
         }
 
 
         if (reto.items.indexOf('html') >= 0  && !html.value) {
-            textareas[0] = { html: false };
+            textareas.html=false;
         }
 
-        console.log(JSON.stringify(textareas[0]))
-        if(JSON.stringify(textareas)===JSON.stringify(textareas1)  ){
+        console.log(JSON.stringify(textareas.js))
+        if(textareas.js && textareas.html && textareas.css){
             
 return true;
         }
-
+        return false;
     }
+
+UpdateState(){
+    const { Info } = this.props;
+    if(Info.length <= this.currentindex){
+     this.setState({estado:false});
+    }
+}
+
+SaveTextarea(retos){
+    var javascript = document.getElementById("text_js");
+    var css = document.getElementById("text_css");
+    var html = document.getElementById("text_html");
+    var reto=[];
+
+    if (retos.items.indexOf('js') >= 0 && javascript.value) {
+        reto.push(javascript.value);
+    }
+
+    if (retos.items.indexOf('css') >= 0 && css.value) {
+        reto.push(css.value);
+    }
+
+
+    if (retos.items.indexOf('html') >= 0  && html.value) {
+        reto.push(html.value);
+    }
+var reto1=this.state.reto_1;
+reto1['reto'+this.currentindex]=reto;
+this.setState({reto_1:reto1});
+console.log(this.state.reto_1);
+}
 
     goNext() {
         const { Info } = this.props;
@@ -59,6 +89,8 @@ return true;
             this.setState({ reto: this.currentindex + 1 })
             this.currentindex = this.currentindex + 1;
             console.log(this.state.reto_1);
+            this.UpdateState();
+            this.SaveTextarea(Info[this.state.reto])
         }
         else {
             alert("TANTO JAVASCRIPT COMO HTML NO PUEDE ESTAR VACIOS");
