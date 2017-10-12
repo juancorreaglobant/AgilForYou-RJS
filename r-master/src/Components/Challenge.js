@@ -3,7 +3,7 @@ import './Styles/Styles.css';
 import PropTypes from 'prop-types';
 import ThanksYou from './ThanksYou';
 import Chulos from './Chulos';
-
+import swal from 'sweetalert';
 class Challenge extends Component {
     constructor(props) {
         super(props);
@@ -93,7 +93,7 @@ console.log(this.state.reto_1);
             this.SaveTextarea(Info[this.state.reto])
         }
         else {
-            alert("TANTO JAVASCRIPT COMO HTML NO PUEDE ESTAR VACIOS");
+            swal ( "Oops" ,  "Something went wrong!" ,  "error" )
         }
     }
 
