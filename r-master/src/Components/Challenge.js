@@ -24,7 +24,7 @@ class Challenge extends Component {
             TODO: 
             1. Hacer las validaciones dependiendo si tiene JS, CSS o HTML. (1hora)
             2. Mejorar los retos para que incluyan CSS. (10 minutos)
-            3. Subir la informacion al servidor el arreglo con la solucion y la url a la hoja de vida. (1 hora)
+            3. Subir la informacion al servidor el arreglo con la solucion y la url a la hoja de vida. 
         */
         var textareas = { html: true ,  css: true,  js: true };
         var javascript = document.getElementById("text_js");
