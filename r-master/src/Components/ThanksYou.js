@@ -20,18 +20,13 @@ class ThanksYou extends Component {
     }
     UploadChallenge(url){
         const ruta = firebase.database().ref('/Retos_result');
-        
-    /*  var texthtml1 = document.getElementById("txtreto1html");
-        var html = texthtml1.value
-    */
+
         const obj={
             CVURL:url,
-            Reto1:{
-         /*       JS:html,
-                HTML:html*/ 
-            }
+            Retos:
+                this.props.Info
+            
           }
-
 
           ruta.push().set(obj);
     }
