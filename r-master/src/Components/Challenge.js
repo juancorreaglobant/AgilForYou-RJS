@@ -3,7 +3,9 @@ import './Styles/Styles.css';
 import PropTypes from 'prop-types';
 import ThanksYou from './ThanksYou';
 import Chulos from './Chulos';
-import swal from 'sweetalert';
+
+import swal from 'sweetalert'
+
 class Challenge extends Component {
     constructor(props) {
         super(props);
@@ -115,12 +117,14 @@ console.log(this.state.reto_1);
         }
         else {
             swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+
         }
     }
 
 
 
     render() {
+        
         const { Info } = this.props;
         if (this.state.estado === true) {
             return (
@@ -170,7 +174,7 @@ console.log(this.state.reto_1);
             );
         } else {
             return (
-                <div> <ThanksYou /> </div>
+                <div> <ThanksYou Info={this.state.reto_1}/> </div>
             );
         }
 
