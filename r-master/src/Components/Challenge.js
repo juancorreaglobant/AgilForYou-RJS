@@ -16,6 +16,7 @@ class Challenge extends Component {
             reto_1: []
         }
         this.currentindex = 0;
+        console.log(this.props.Info)
     }
 
     isValid(reto) {
@@ -25,31 +26,38 @@ class Challenge extends Component {
             2. Mejorar los retos para que incluyan CSS. (10 minutos)
             3. Subir la informacion al servidor el arreglo con la solucion y la url a la hoja de vida. (1 hora)
         */
-        if (reto.items.indexOf('js')) {
-            var javascript = document.getElementById("text_js");
-            if (javascript.value) {
-                return false;
-            }
-        }
-       
+        var textareas = [{ html: true }, { css: true }, { js: true }];
+        var textareas1 = [{ html: true }, { css: true }, { js: true }];
+        var javascript = document.getElementById("text_js");
+        var css = document.getElementById("text_css");
         var html = document.getElementById("text_html");
-        if (this.state.reto === 0 && this.state.estado === true) {
-            if (html.value === "" || javascript === "") {
-                return false;
 
-            }
+        if (reto.items.indexOf('js') >= 0 && !javascript.value) {
+            textareas[2] = { js: false };
         }
-        return true;
+
+        if (reto.items.indexOf('css') >= 0 && !css.value) {
+            textareas[1] = { css: false };
+        }
+
+
+        if (reto.items.indexOf('html') >= 0  && !html.value) {
+            textareas[0] = { html: false };
+        }
+
+        console.log(JSON.stringify(textareas[0]))
+        if(JSON.stringify(textareas)===JSON.stringify(textareas1)  ){
+            
+return true;
+        }
+
     }
 
     goNext() {
+        const { Info } = this.props;
         if (this.isValid(Info[this.state.reto])) {
-            this.setState({ reto: this.currentIndex + 1 })
-            var reto = this.state.reto_1;
-            reto["reto1"] = { HTML: html.value, JAVASCRIPT: javascript.value };
-            this.setState({ reto_1: reto });
-            html.value = "";
-            javascript.value = "";
+            this.setState({ reto: this.currentindex + 1 })
+            this.currentindex = this.currentindex + 1;
             console.log(this.state.reto_1);
         }
         else {
@@ -73,7 +81,7 @@ class Challenge extends Component {
                         </p>
                         <div className="row">
                             {
-                                (Info[this.state.reto].indexOf('js') ?
+                                (Info[this.state.reto].items.indexOf('js') >= 0 ?
                                     <div className="col-md-4" align="center">
                                         <h2><strong>JAVASCRIPT</strong></h2>
                                         <textarea id="text_js" className="Textarea"></textarea>
@@ -81,7 +89,7 @@ class Challenge extends Component {
                                 )
                             }
                             {
-                                (Info[this.state.reto].indexOf('css') ?
+                                (Info[this.state.reto].items.indexOf('css') >= 0 ?
                                     <div className="col-md-4" align="center">
                                         <h2 ><strong>CSS</strong></h2>
                                         <textarea id="text_css" className="Textarea"></textarea>
@@ -89,7 +97,7 @@ class Challenge extends Component {
                                 )
                             }
                             {
-                                (Info[this.state.reto].indexOf('html') ?
+                                (Info[this.state.reto].items.indexOf('html') >= 0 ?
                                     <div className="col-md-4" align="center">
                                         <h2 ><strong>HTML</strong></h2>
                                         <textarea id="text_html" className="Textarea"></textarea>
