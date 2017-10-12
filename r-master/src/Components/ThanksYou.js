@@ -15,7 +15,25 @@ class ThanksYou extends Component {
 
         this.UploadCV = this.UploadCV.bind(this);
         this.ChangeCom = this.ChangeCom.bind(this);
+        this.UploadChallenge = this.UploadChallenge.bind(this);
 
+    }
+    UploadChallenge(url){
+        const ruta = firebase.database().ref('/Retos_result');
+        
+    /*  var texthtml1 = document.getElementById("txtreto1html");
+        var html = texthtml1.value
+    */
+        const obj={
+            CVURL:url,
+            Reto1:{
+                JS:html,
+                HTML:html
+            }
+          }
+
+
+          ruta.push().set(obj);
     }
     ChangeCom() {
         this.setState({ id: false });
@@ -35,9 +53,10 @@ class ThanksYou extends Component {
         }, error => {
             console.log(error.message)
         }, () => {
-            this.setState({
-                uploadValue: 100
-            })
+                
+           this.UploadChallenge(task.snapshot.downloadURL)
+              
+
         })
     }
 
@@ -66,11 +85,13 @@ class ThanksYou extends Component {
 
 
                                 <input type="file" className="btn btn-default" onChange={this.UploadCV}></input>
+                                <div align="left" className="Space_1">
                                 <progress value={this.state.uploadValue} max='100' className="barra"></progress>
+                                </div>
+
+                                
                                 <div align="center"></div>
                                 <input type="button" value="SUBMIT" className="btn-up" onClick={this.ChangeCom}></input>
-
-
                             </div>
                             <div className="col-md-2">
                             </div>

@@ -152,6 +152,10 @@
 .Space{
     padding: 30px 30px 30px 30px; 
 }
+.Space_1{
+    position: relative;
+    padding: 10px 70px 10px 70px; 
+}
 .top{
     margin-top: 5%;
     display: none;
