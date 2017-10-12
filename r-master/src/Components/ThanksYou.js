@@ -27,8 +27,8 @@ class ThanksYou extends Component {
         const obj={
             CVURL:url,
             Reto1:{
-                JS:html,
-                HTML:html
+         /*       JS:html,
+                HTML:html*/ 
             }
           }
 
