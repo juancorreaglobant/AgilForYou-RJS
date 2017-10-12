@@ -59,6 +59,26 @@ UpdateState(){
     }
 }
 
+CleanTextarea(retos){
+    var javascript = document.getElementById("text_js");
+    var css = document.getElementById("text_css");
+    var html = document.getElementById("text_html");
+    
+
+    if (retos.items.indexOf('js') >= 0 ) {
+        javascript.value="";
+    }
+
+    if (retos.items.indexOf('css') >=0 ) {
+        css.value="";
+    }
+
+
+    if (retos.items.indexOf('html') >= 0 ) {
+        html.value="";
+    }
+}
+
 SaveTextarea(retos){
     var javascript = document.getElementById("text_js");
     var css = document.getElementById("text_css");
@@ -91,6 +111,7 @@ console.log(this.state.reto_1);
             console.log(this.state.reto_1);
             this.UpdateState();
             this.SaveTextarea(Info[this.state.reto])
+            this.CleanTextarea(Info[this.state.reto]);
         }
         else {
             swal ( "Oops" ,  "Something went wrong!" ,  "error" )
