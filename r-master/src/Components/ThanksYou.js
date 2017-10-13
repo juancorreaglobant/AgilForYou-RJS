@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import Challenge from './Challenge';
 import info from './Data/InfoComponent';
 import CodingChallenge from './CodingChallenge';
+import Chulos from './Chulos';
 
 class ThanksYou extends Component {
     constructor() {
@@ -61,9 +62,8 @@ class ThanksYou extends Component {
             return (
                 <section id="gracias">
                     <div align="center">
-                        <div className="row">
-                            <div className="col-md-2">
-                            </div>
+                        <div className="center">
+
                             <div className="col-md-3" align="right">
                                 <h1>  THANK YOU! </h1>
                                 <h3> thank you for participation in this coding challenge,
@@ -88,25 +88,9 @@ class ThanksYou extends Component {
                                 <div align="center"></div>
                                 <input type="button" value="SUBMIT" className="btn-up" onClick={this.ChangeCom}></input>
                             </div>
-                            <div className="col-md-2">
-                            </div>
                         </div>                     
                         <div className="Space">
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
-
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
-
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
-
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
+                           
                         </div>
                     </div>
                 </section>
