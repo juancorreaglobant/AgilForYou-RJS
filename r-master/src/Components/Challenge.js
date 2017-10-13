@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Styles/Styles.css';
-import PropTypes from 'prop-types';
 import ThanksYou from './ThanksYou';
 import Chulos from './Chulos';
 
@@ -173,8 +172,9 @@ console.log(this.state.reto_1);
                 </section>
             );
         } else {
+            const { Info } = this.props;
             return (
-                <div> <ThanksYou Info={this.state.reto_1}/> </div>
+                <div> <ThanksYou Info={this.state.reto_1} chulosCompletados={this.state.reto} chulosTotales={Info.length}/> </div>
             );
         }
 

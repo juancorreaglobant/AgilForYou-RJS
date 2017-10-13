@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './Styles/Styles.css';
 import firebase from 'firebase';
-import Challenge from './Challenge';
-import info from './Data/InfoComponent';
 import CodingChallenge from './CodingChallenge';
+import Chulos from './Chulos';
 
 class ThanksYou extends Component {
     constructor() {
@@ -57,6 +56,7 @@ class ThanksYou extends Component {
 
     render() {
         const id = this.state.id;
+        const { chulosCompletados,chulosTotales} = this.props;
         if (id) {
             return (
                 <section id="gracias">
@@ -92,21 +92,7 @@ class ThanksYou extends Component {
                             </div>
                         </div>                     
                         <div className="Space">
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
-
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
-
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
-
-                            <span className="colum">
-                                <span className="glyphicon glyphicon-ok" id="icon-ok"></span>
-                            </span>
+                        <Chulos chulosCompletados={chulosCompletados} chulosTotales={chulosTotales} />
                         </div>
                     </div>
                 </section>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Styles/Styles.css';
 import Challenge from './Challenge';
-import info from './Data/InfoComponent';
 import firebase from 'firebase';
 
 
