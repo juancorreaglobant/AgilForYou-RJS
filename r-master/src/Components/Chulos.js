@@ -1,8 +1,4 @@
-
 import React, { Component } from 'react';
-import ReactDom from 'react';
-
-
 
 class Chulos extends Component {
     constructor(){
@@ -21,9 +17,9 @@ class Chulos extends Component {
         ) ;  
         }
 
-        for (var i = 0; i < chulosTotales - chulosCompletados; i++) {
+        for (var i=0; i < chulosTotales - chulosCompletados; i++) {
         htmlChulos.push(
-            <span className="colum">
+            <span className="colum" key={i+chulosTotales+10}>
                 <span className="glyphicon glyphicon-ok" key={i+chulosTotales}></span>
             </span>
         ) ;  
