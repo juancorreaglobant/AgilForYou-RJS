@@ -85,8 +85,12 @@ class ThanksYou extends Component {
                                 </div>
 
                                 
-                                <div align="center"></div>
-                                <input type="button" value="SUBMIT" className="btn-up" onClick={this.ChangeCom}></input>
+                                 {
+                                (this.state.uploadValue >= 100 ?
+                                    <input type="button" value="SUBMIT" className="btn-up" onClick={this.ChangeCom}></input> : ''
+                                )
+                            }
+                                
                             </div>
                             <div className="col-md-2">
                             </div>
