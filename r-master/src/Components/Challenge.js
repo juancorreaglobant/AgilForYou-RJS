@@ -115,7 +115,7 @@ console.log(this.state.reto_1);
             this.CleanTextarea(Info[this.state.reto]);
         }
         else {
-            swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+            swal ( "Alert:" ,  "Some textarea is empty!" ,  "error" )
 
         }
     }
@@ -135,10 +135,11 @@ console.log(this.state.reto_1);
                         <p className="text" id="descripcion3">
                             {Info[this.state.reto].descripcion}
                         </p>
-                        <div className="row">
+                        <div className="center">
+                            
                             {
                                 (Info[this.state.reto].items.indexOf('js') >= 0 ?
-                                    <div className="col-md-4" align="center">
+                                    <div className="fill" align="center">
                                         <h2><strong>JAVASCRIPT</strong></h2>
                                         <textarea id="text_js" className="Textarea"></textarea>
                                     </div> : ''
@@ -146,7 +147,7 @@ console.log(this.state.reto_1);
                             }
                             {
                                 (Info[this.state.reto].items.indexOf('css') >= 0 ?
-                                    <div className="col-md-4" align="center">
+                                    <div className="fill" align="center">
                                         <h2 ><strong>CSS</strong></h2>
                                         <textarea id="text_css" className="Textarea"></textarea>
                                     </div> : ''
@@ -154,13 +155,13 @@ console.log(this.state.reto_1);
                             }
                             {
                                 (Info[this.state.reto].items.indexOf('html') >= 0 ?
-                                    <div className="col-md-4" align="center">
+                                    <div className="fill" align="center">
                                         <h2 ><strong>HTML</strong></h2>
                                         <textarea id="text_html" className="Textarea"></textarea>
                                     </div> : ''
                                 )
                             }
-
+                            
                         </div>
                         <div className="Space">
                             <button type="button" onClick={this.goNext} id="Next">Next</button>

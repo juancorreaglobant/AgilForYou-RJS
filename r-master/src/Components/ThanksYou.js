@@ -61,9 +61,8 @@ class ThanksYou extends Component {
             return (
                 <section id="gracias">
                     <div align="center">
-                        <div className="row">
-                            <div className="col-md-2">
-                            </div>
+                        <div className="center">
+
                             <div className="col-md-3" align="right">
                                 <h1>  THANK YOU! </h1>
                                 <h3> thank you for participation in this coding challenge,
@@ -92,11 +91,9 @@ class ThanksYou extends Component {
                             }
                                 
                             </div>
-                            <div className="col-md-2">
-                            </div>
                         </div>                     
                         <div className="Space">
-                        <Chulos chulosCompletados={chulosCompletados} chulosTotales={chulosTotales} />
+                           <Chulos chulosCompletados={chulosCompletados} chulosTotales={chulosTotales} />
                         </div>
                     </div>
                 </section>
