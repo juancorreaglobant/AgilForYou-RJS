@@ -46,14 +46,16 @@ class Challenge extends Component {
             textareas.html=false;
             swal ( "Alert:" ,  "You must complete the field:HTML" ,  "error" )
         }
-
+     
         console.log(JSON.stringify(textareas.js))
         if(textareas.js && textareas.html && textareas.css){
          
          return true;
 
         }else{
-      return false;
+          
+           return false;
+          
         }
     
       
@@ -101,7 +103,7 @@ console.log(this.state.reto_1);
             this.UpdateState();
             this.SaveTextarea(Info[this.state.reto])
         }else{
-            swal ( "Alert:" ,  "You must complete both field" ,  "error" )
+         
 
             
         }
