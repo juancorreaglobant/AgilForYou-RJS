@@ -13,6 +13,8 @@
       font-size: 20px;
       color: #5A5F5F;
       text-align:center;
+      width: 96%;
+      margin:0vw 1vw;
   }
   
   
@@ -24,6 +26,8 @@
       text-align: justify;
       line-height:19pt;
       text-align:center;
+      width: 96%;
+      margin:0vw 1vw;
   }
   
   .boton{
@@ -113,7 +117,7 @@
 /*Styles Challenge:*/
 /*Boton Next*/
 .Textarea{
-    width:400px;
+    width:90%;
     height:300px;
     font-size:16px;
     font-family:Arial
@@ -142,13 +146,14 @@
     color: #1ED022;
 }
 /*Bordes y colores que estan alrededor de los chulitos*/
+
 .center{
-    display: flex;
+    width: 100%;
     justify-content: center;
 }
 .fill{
-    padding: 10px;
-    margin: 10px;
+    width: 40%;
+    padding: 0px 10px 0px 10px; 
 }
 .colum{
     border: 1.5px solid #000000;
@@ -161,8 +166,10 @@
     padding: 30px 30px 30px 30px; 
 }
 .Space_1{
+
+    width: 95%;
     position: relative;
-    padding: 10px 70px 10px 70px; 
+
 }
 .top{
     margin-top: 5%;
@@ -175,8 +182,8 @@
 }
 
 .barra{
-
-    width: 270px;
+    align-content: right;
+    width: 100%;
     margin: 1em;
     padding: 4px;
     border: 2px #000000 solid; 
@@ -208,3 +215,44 @@
     padding: 0px 0px 200px 0px;
     border-right: 1px solid #000000;
 }
+
+@media screen and (max-width:900px) {
+    #Linea{
+        padding: 0px 0px 0px 0px;
+        border-top: 1px solid #000000;
+        
+    }
+    .Space_1{
+        justify-content: center;
+        width: 95%;
+        position: relative;
+
+    }
+    .ty{
+       
+        text-align: center;
+        justify-content: center;
+        
+      
+    }
+    .input{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        
+    }
+    .Textarea{
+        width:100%;
+        height:280px;
+        font-size:16px;
+        font-family:Arial
+    }
+    
+}
+@media screen and (min-width:900px ){
+
+        .center{
+            display: flex;
+            justify-content: center;
+        }
+    }
