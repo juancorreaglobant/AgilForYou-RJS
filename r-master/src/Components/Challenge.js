@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Styles/Styles.css';
 import ThanksYou from './ThanksYou';
 import Chulos from './Chulos';
-
 import swal from 'sweetalert'
 
 class Challenge extends Component {
@@ -34,23 +33,32 @@ class Challenge extends Component {
 
         if (reto.items.indexOf('js') >= 0 && !javascript.value) {
             textareas.js=false;
+            swal ( "Alert:" ,  "You must complete the field:JS" ,  "error" )
         }
 
         if (reto.items.indexOf('css') >= 0 && !css.value) {
             textareas.css=false;
+            swal ( "Alert:" ,  "You must complete the field:CSS" ,  "error" )
         }
 
 
         if (reto.items.indexOf('html') >= 0  && !html.value) {
             textareas.html=false;
+            swal ( "Alert:" ,  "You must complete the field:HTML" ,  "error" )
         }
-
+     
         console.log(JSON.stringify(textareas.js))
         if(textareas.js && textareas.html && textareas.css){
-            
-return true;
+         
+         return true;
+
+        }else{
+          
+           return false;
+          
         }
-        return false;
+    
+      
     }
 
 UpdateState(){
@@ -88,6 +96,7 @@ SaveTextarea(retos){
 
     if (retos.items.indexOf('js') >= 0 && javascript.value) {
         reto.push(javascript.value);
+        
     }
 
     if (retos.items.indexOf('css') >= 0 && css.value) {
@@ -106,24 +115,22 @@ console.log(this.state.reto_1);
 
     goNext() {
         const { Info } = this.props;
+    
         if (this.isValid(Info[this.state.reto])) {
             this.setState({ reto: this.currentindex + 1 })
             this.currentindex = this.currentindex + 1;
             console.log(this.state.reto_1);
             this.UpdateState();
-            this.SaveTextarea(Info[this.state.reto])
+            this.SaveTextarea(Info[this.state.reto]);
             this.CleanTextarea(Info[this.state.reto]);
+            
         }
-        else {
-            swal ( "Alert:" ,  "Some textarea is empty!" ,  "error" )
-
-        }
+      
     }
 
 
 
     render() {
-        
         const { Info } = this.props;
         if (this.state.estado === true) {
             return (
