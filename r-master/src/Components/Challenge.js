@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Styles/Styles.css';
 import ThanksYou from './ThanksYou';
 import Chulos from './Chulos';
-
 import swal from 'sweetalert'
 
 class Challenge extends Component {
@@ -141,7 +140,7 @@ console.log(this.state.reto_1);
                                 (Info[this.state.reto].items.indexOf('js') >= 0 ?
                                     <div className="fill" align="center">
                                         <h2><strong>JAVASCRIPT</strong></h2>
-                                        <textarea id="text_js" className="Textarea"></textarea>
+                                        <textarea id="text_js" className="Textarea javascript"></textarea>
                                     </div> : ''
                                 )
                             }
