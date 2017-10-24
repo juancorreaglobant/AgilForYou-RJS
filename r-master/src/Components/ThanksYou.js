@@ -60,39 +60,50 @@ class ThanksYou extends Component {
         if (id) {
             return (
                 <section id="gracias">
-                    <div align="center">
+                    <div>
                         <div className="center">
 
                             <div className="col-md-3" align="right">
-                                <h1>  THANK YOU! </h1>
-                                <h3> thank you for participation in this coding challenge,
-                                     plis upload your curriculum vitae for
-                                     to contact you after... 
-                                </h3>
+                                <div className="ty">
+                                    <h1>  THANK YOU! </h1>
+                                    <h3> 
+                                        Thank you for participation in this coding challenge,
+                                        please upload your curriculum vitae for
+                                        to contact you after... 
+                                    </h3>
+                                </div>
                             </div>
                             <div className="col-md-1" id="Linea">
                             </div>
                             <div className="col-md-4">
+                                <div className="ty" align="center">
                                 <h1>
                                     CURRICULUM VITAE
                                 </h1>
 
-
+                                <div className="input" align="center">
+                                
                                 <input type="file" className="btn btn-default" onChange={this.UploadCV}></input>
-                                <div align="left" className="Space_1">
-                                <progress value={this.state.uploadValue} max='100' className="barra"></progress>
                                 </div>
-
+                                </div>
+                                
+                                    <div  className="Space_1" align="rigth">
+                                        <progress value={this.state.uploadValue} max='100' className="barra"></progress>
+                                    </div>
+                                
                                 
                                  {
                                 (this.state.uploadValue >= 100 ?
-                                    <input type="button" value="SUBMIT" className="btn-up" onClick={this.ChangeCom}></input> : ''
+                                    <div align="center">
+                                    <input type="button" value="SUBMIT" className="btn-up" onClick={this.ChangeCom}></input>
+                                    </div> : ''
+                                    
                                 )
                             }
                                 
                             </div>
                         </div>                     
-                        <div className="Space">
+                        <div className="Space" align="center">
                            <Chulos chulosCompletados={chulosCompletados} chulosTotales={chulosTotales} />
                         </div>
                     </div>
