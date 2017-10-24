@@ -3,13 +3,18 @@ import './Styles/Styles.css';
 import ThanksYou from './ThanksYou';
 import Chulos from './Chulos';
 import swal from 'sweetalert'
+import brace from 'brace';
+import AceEditor from 'react-ace';
+ 
+import 'brace/mode/javascript';
+import 'brace/theme/monokai';
 
 class Challenge extends Component {
     constructor(props) {
         super(props);
         this.goNext = this.goNext.bind(this);
         this.isValid = this.isValid.bind(this);
-
+        this.onChange = this.onChange.bind(this);
         this.state = {
             reto: 0,
             estado: true,
@@ -129,6 +134,10 @@ console.log(this.state.reto_1);
     }
 
 
+    onChange(newValue) {
+        console.log('change', newValue);
+    }
+
 
     render() {
         const { Info } = this.props;
@@ -148,7 +157,13 @@ console.log(this.state.reto_1);
                                 (Info[this.state.reto].items.indexOf('js') >= 0 ?
                                     <div className="fill" align="center">
                                         <h2><strong>JAVASCRIPT</strong></h2>
-                                        <textarea id="text_js" className="Textarea"></textarea>
+                                        <AceEditor
+                                            mode="javascript"                                         
+                                            theme="monokai"                                           
+                                            style={{ width:'90%'}}
+                                            onChange={this.onChange}                                          
+                                            editorProps={{ $blockScrolling: true }}
+                                        />
                                     </div> : ''
                                 )
                             }
