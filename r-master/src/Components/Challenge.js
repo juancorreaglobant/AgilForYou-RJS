@@ -12,13 +12,15 @@ import 'brace/theme/monokai';
 class Challenge extends Component {
     constructor(props) {
         super(props);
+        this.currentJS = "";
         this.goNext = this.goNext.bind(this);
         this.isValid = this.isValid.bind(this);
-        this.onChange = this.onChange.bind(this);
+        this.asign_js = this.asign_js.bind(this);
         this.state = {
             reto: 0,
             estado: true,
-            reto_1: []
+            reto_1: [],
+            reto_js:""
         }
         this.currentindex = 0;
         console.log(this.props.Info)
@@ -32,11 +34,11 @@ class Challenge extends Component {
             3. Subir la informacion al servidor el arreglo con la solucion y la url a la hoja de vida. 
         */
         var textareas = { html: true ,  css: true,  js: true };
-        var javascript = document.getElementById("text_js");
+        var javascript = this.currentJS;
         var css = document.getElementById("text_css");
         var html = document.getElementById("text_html");
 
-        if (reto.items.indexOf('js') >= 0 && !javascript.value) {
+        if (reto.items.indexOf('js') >= 0 && !javascript) {
             textareas.js=false;
             swal ( "Alert:" ,  "You must complete the field:JS" ,  "error" )
         }
@@ -74,13 +76,13 @@ UpdateState(){
 }
 
 CleanTextarea(retos){
-    var javascript = document.getElementById("text_js");
+    var javascript = this.currentJS;
     var css = document.getElementById("text_css");
     var html = document.getElementById("text_html");
     
 
     if (retos.items.indexOf('js') >= 0 ) {
-        javascript.value="";
+        javascript="";
     }
 
     if (retos.items.indexOf('css') >=0 ) {
@@ -94,13 +96,13 @@ CleanTextarea(retos){
 }
 
 SaveTextarea(retos){
-    var javascript = document.getElementById("text_js");
+    var javascript = this.currentJS;
     var css = document.getElementById("text_css");
     var html = document.getElementById("text_html");
     var reto=[];
 
-    if (retos.items.indexOf('js') >= 0 && javascript.value) {
-        reto.push(javascript.value);
+    if (retos.items.indexOf('js') >= 0 && javascript) {
+        reto.push(javascript);
         
     }
 
@@ -116,6 +118,7 @@ var reto1=this.state.reto_1;
 reto1['reto'+this.currentindex]=reto;
 this.setState({reto_1:reto1});
 console.log(this.state.reto_1);
+this.currentJS = ""; //Limpiar los valores de componente
 }
 
     goNext() {
@@ -134,8 +137,9 @@ console.log(this.state.reto_1);
     }
 
 
-    onChange(newValue) {
-        console.log('change', newValue);
+    asign_js(newValue, event) {    
+        this.currentJS = newValue;
+        console.log(this.currentJS);
     }
 
 
@@ -161,7 +165,7 @@ console.log(this.state.reto_1);
                                             mode="javascript"                                         
                                             theme="monokai"                                           
                                             style={{ width:'90%'}}
-                                            onChange={this.onChange}                                          
+                                            onChange={this.asign_js}                                          
                                             editorProps={{ $blockScrolling: true }}
                                         />
                                     </div> : ''
