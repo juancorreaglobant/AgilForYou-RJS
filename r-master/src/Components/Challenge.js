@@ -7,15 +7,21 @@ import brace from 'brace';
 import AceEditor from 'react-ace';
  
 import 'brace/mode/javascript';
+import 'brace/mode/html';
+import 'brace/mode/css';
 import 'brace/theme/monokai';
 
 class Challenge extends Component {
     constructor(props) {
         super(props);
         this.currentJS = "";
+        this.currentCSS = "";
+        this.currentHTML = "";
         this.goNext = this.goNext.bind(this);
         this.isValid = this.isValid.bind(this);
         this.asign_js = this.asign_js.bind(this);
+        this.asign_css = this.asign_css.bind(this);
+        this.asign_html = this.asign_html.bind(this);
         this.state = {
             reto: 0,
             estado: true,
@@ -27,29 +33,24 @@ class Challenge extends Component {
     }
 
     isValid(reto) {
-        /*
-            TODO: 
-            1. Hacer las validaciones dependiendo si tiene JS, CSS o HTML. (1hora)
-            2. Mejorar los retos para que incluyan CSS. (10 minutos)
-            3. Subir la informacion al servidor el arreglo con la solucion y la url a la hoja de vida. 
-        */
+
         var textareas = { html: true ,  css: true,  js: true };
         var javascript = this.currentJS;
-        var css = document.getElementById("text_css");
-        var html = document.getElementById("text_html");
+        var css = this.currentCSS;
+        var html = this.currentHTML;
 
         if (reto.items.indexOf('js') >= 0 && !javascript) {
             textareas.js=false;
             swal ( "Alert:" ,  "You must complete the field:JS" ,  "error" )
         }
 
-        if (reto.items.indexOf('css') >= 0 && !css.value) {
+        if (reto.items.indexOf('css') >= 0 && !css) {
             textareas.css=false;
             swal ( "Alert:" ,  "You must complete the field:CSS" ,  "error" )
         }
 
 
-        if (reto.items.indexOf('html') >= 0  && !html.value) {
+        if (reto.items.indexOf('html') >= 0  && !html) {
             textareas.html=false;
             swal ( "Alert:" ,  "You must complete the field:HTML" ,  "error" )
         }
@@ -77,8 +78,8 @@ UpdateState(){
 
 CleanTextarea(retos){
     var javascript = this.currentJS;
-    var css = document.getElementById("text_css");
-    var html = document.getElementById("text_html");
+    var css = this.currentCSS;
+    var html = this.currentHTML;
     
 
     if (retos.items.indexOf('js') >= 0 ) {
@@ -86,19 +87,19 @@ CleanTextarea(retos){
     }
 
     if (retos.items.indexOf('css') >=0 ) {
-        css.value="";
+        css="";
     }
 
 
     if (retos.items.indexOf('html') >= 0 ) {
-        html.value="";
+        html="";
     }
 }
 
 SaveTextarea(retos){
     var javascript = this.currentJS;
-    var css = document.getElementById("text_css");
-    var html = document.getElementById("text_html");
+    var css = this.currentCSS;
+    var html = this.currentHTML;
     var reto=[];
 
     if (retos.items.indexOf('js') >= 0 && javascript) {
@@ -106,19 +107,22 @@ SaveTextarea(retos){
         
     }
 
-    if (retos.items.indexOf('css') >= 0 && css.value) {
-        reto.push(css.value);
+    if (retos.items.indexOf('css') >= 0 && css) {
+        reto.push(css);
     }
 
 
-    if (retos.items.indexOf('html') >= 0  && html.value) {
-        reto.push(html.value);
+    if (retos.items.indexOf('html') >= 0  && html) {
+        reto.push(html);
     }
 var reto1=this.state.reto_1;
 reto1['reto'+this.currentindex]=reto;
 this.setState({reto_1:reto1});
 console.log(this.state.reto_1);
-this.currentJS = ""; //Limpiar los valores de componente
+//Limpiar los valores de componente
+this.currentJS = "";
+this.currentCSS = "";
+this.currentHTML = ""; 
 }
 
     goNext() {
@@ -140,6 +144,14 @@ this.currentJS = ""; //Limpiar los valores de componente
     asign_js(newValue, event) {    
         this.currentJS = newValue;
         console.log(this.currentJS);
+    }
+    asign_css(newValue2, event) {    
+        this.currentCSS = newValue2;
+        console.log(this.currentCSS);
+    }
+    asign_html(newValue3, event) {    
+        this.currentHTML = newValue3;
+        console.log(this.currentHTML);
     }
 
 
@@ -175,7 +187,13 @@ this.currentJS = ""; //Limpiar los valores de componente
                                 (Info[this.state.reto].items.indexOf('css') >= 0 ?
                                     <div className="fill" align="center">
                                         <h2 ><strong>CSS</strong></h2>
-                                        <textarea id="text_css" className="Textarea"></textarea>
+                                        <AceEditor
+                                            mode="css"                                         
+                                            theme="monokai"                                           
+                                            style={{ width:'90%'}}
+                                            onChange={this.asign_css}                                          
+                                            editorProps={{ $blockScrolling: true }}
+                                        />
                                     </div> : ''
                                 )
                             }
@@ -183,7 +201,13 @@ this.currentJS = ""; //Limpiar los valores de componente
                                 (Info[this.state.reto].items.indexOf('html') >= 0 ?
                                     <div className="fill" align="center">
                                         <h2 ><strong>HTML</strong></h2>
-                                        <textarea id="text_html" className="Textarea"></textarea>
+                                        <AceEditor
+                                            mode="html"                                         
+                                            theme="monokai"                                           
+                                            style={{ width:'90%'}}
+                                            onChange={this.asign_html}                                          
+                                            editorProps={{ $blockScrolling: true }}
+                                        />
                                     </div> : ''
                                 )
                             }

@@ -3,6 +3,7 @@ import './Styles/Styles.css';
 import firebase from 'firebase';
 import CodingChallenge from './CodingChallenge';
 import Chulos from './Chulos';
+import swal from 'sweetalert'
 
 class ThanksYou extends Component {
     constructor() {
@@ -31,6 +32,7 @@ class ThanksYou extends Component {
     }
     ChangeCom() {
         this.setState({ id: false });
+        swal('Thank you! we will contact you.')
     }
     UploadCV(event) {
         const file = event.target.files[0];

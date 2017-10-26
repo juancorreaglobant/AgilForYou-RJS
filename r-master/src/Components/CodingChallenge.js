@@ -42,7 +42,7 @@ class CodingChallenge extends Component {
                         </p>
                     </div>
                     <button type="button" className="boton" id="start" onClick={this.ChangeCom}>
-                        Are you ready!
+                        Are you ready?
             </button>
                 </section>
             )
