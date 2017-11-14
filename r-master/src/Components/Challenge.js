@@ -103,17 +103,20 @@ SaveTextarea(retos){
     var reto=[];
 
     if (retos.items.indexOf('js') >= 0 && javascript) {
-        reto.push(javascript);
+        var retojs={'item':'js','result':javascript}
+        reto.push(retojs);
         
     }
 
     if (retos.items.indexOf('css') >= 0 && css) {
-        reto.push(css);
+       var retocss={'item':'css','result':css}
+        reto.push(retocss);
     }
 
 
     if (retos.items.indexOf('html') >= 0  && html) {
-        reto.push(html);
+        var retohtml={'item':'html','result':html}
+        reto.push(retohtml);
     }
 var reto1=this.state.reto_1;
 reto1['reto'+this.currentindex]=reto;
