@@ -24,7 +24,9 @@ class ThanksYou extends Component {
         const obj={
             CVURL:url,
             Retos:
-                this.props.Info
+                this.props.Info,
+                puntuacion:0,
+                qualified:"glyphicon glyphicon-eye-close"
             
           }
 
